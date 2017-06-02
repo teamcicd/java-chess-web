@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+  http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+  http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+  http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/chessSingleClient.json">chessSingleClientJsonController</prop>
+				<prop key="/chessSingleClient.htm">chessSingleClientUiController</prop>
+				<prop key="/chessMultiClient.json">chessMultiClientJsonController</prop>
+				<prop key="/chessMultiClient.htm">chessMultiClientUiController</prop>
+				<prop key="/lobby.json">lobbyJsonController</prop>
+				<prop key="/lobby.htm">lobbyUiController</prop>
+				<prop key="/gamePreview.htm">gamePreviewController</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="chessSingleClientJsonController" class="com.brasee.games.chess.web.ChessSingleClientJsonController" />
+	<bean id="chessSingleClientUiController" class="com.brasee.games.chess.web.ChessSingleClientUiController" />
+
+	<bean id="chessMultiClientJsonController" class="com.brasee.games.chess.web.ChessMultiClientJsonController"
+		p:gameManager-ref="multipleClientGameManager" />	
+	<bean id="chessMultiClientUiController" class="com.brasee.games.chess.web.ChessMultiClientUiController"
+		p:gameManager-ref="multipleClientGameManager" />
+
+	<bean id="lobbyChatManager" class="com.brasee.games.lobby.ChatManager" />
+	<bean id="lobbyUserManager" class="com.brasee.games.lobby.UserManager">
+		<constructor-arg index="0" type="long" value="7000" />
+		<constructor-arg index="1" type="long" value="3500" />
+	</bean>
+	<bean id="lobbyJsonController" class="com.brasee.games.lobby.LobbyJsonController"
+		p:chatManager-ref="lobbyChatManager" 
+		p:userManager-ref="lobbyUserManager" />
+	<bean id="lobbyUiController" class="com.brasee.games.lobby.LobbyUiController" 
+		p:gameManager-ref="multipleClientGameManager" />
+
+	<bean id="gamePreviewController" class="com.brasee.games.lobby.GamePreviewController"
+		p:gameManager-ref="multipleClientGameManager" />
+	<bean id="multipleClientGameManager" class="com.brasee.games.lobby.MultiClientGameManager">
+		<constructor-arg index="0" type="int" value="3" />
+		<constructor-arg index="1" ref="gamePreviewImageGeneratorFactory" />
+	</bean>
+	<bean id="gamePreviewImageGeneratorFactory" class="com.brasee.games.lobby.GamePreviewImageGeneratorFactory" 
+		p:boardResource="img/board_small.png"
+		p:whitePawnResource="img/pawn_white_small.png"
+		p:whiteKnightResource="img/knight_white_small.png"
+		p:whiteRookResource="img/rook_white_small.png"
+		p:whiteBishopResource="img/bishop_white_small.png"
+		p:whiteKingResource="img/king_white_small.png"
+		p:whiteQueenResource="img/queen_white_small.png"
+		p:blackPawnResource="img/pawn_black_small.png"
+		p:blackKnightResource="img/knight_black_small.png"
+		p:blackRookResource="img/rook_black_small.png"
+		p:blackBishopResource="img/bishop_black_small.png"
+		p:blackKingResource="img/king_black_small.png"
+		p:blackQueenResource="img/queen_black_small.png" />
+	
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+</beans>

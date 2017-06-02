@@ -1,0 +1,207 @@
+/* Chess page styles */
+#leftcontent {
+	float: left;
+	width: 280px;
+	margin: auto;
+	padding-right: 10px;
+}
+
+#centercontent {
+	float: left;
+	width: 360px;
+	margin: auto;
+}
+
+#rightcontent {
+	float: left;
+	width: 280px;
+	margin: auto;
+	padding-left: 10px;
+}
+
+#playersTurn {
+	font-size: 140%;
+	font-weight: bold;
+	color: #000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+#playersTurnDiv {
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.subpanelHeader {
+	font-size: 107%;
+	font-weight: bold; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.subpanelDivOuter {
+	background-color: #CCCCCC;
+	padding: 3px;
+	margin-bottom: 10px;
+}
+
+.subpanelDivInner {
+	background-color: #FFFFFF;
+	text-align: center;
+	padding: 3px;
+}
+
+.rightSubpanelDivOuter {
+	background-color: #CCCCCC;
+	padding: 3px;
+	margin-bottom: 10px;
+}
+
+.rightSubpanelDivInner {
+	background-color: #FFFFFF;
+	text-align: center;
+	padding: 3px;
+	height: 237px;
+}
+
+.capturedPiecesDiv {
+	text-align: center;
+	margin: 0 auto;
+}
+
+#movesTableDiv {
+	width: 200px;
+	height: 200px;
+	overflow: auto;
+	align: center;
+	margin: 0 auto;
+}
+
+#movesTable {
+	width: 175px;
+}
+
+.movesTableHeader1 {
+	width: 25px;
+	border-bottom: 1px solid #AAAAAA;
+	text-align: right;
+	padding-right: 4px;
+}
+
+.movesTableHeader2 {
+	width: 75px;
+	border-bottom: 1px solid #AAAAAA;
+	border-left: 1px solid #AAAAAA;
+	text-align: center;
+}
+
+.movesTableHeader3 {
+	width: 75px;
+	border-bottom: 1px solid #AAAAAA;
+	border-left: 1px solid #AAAAAA;
+	text-align: center;
+}
+
+.movesTableColumn1 {
+	width: 25px;
+	border-left: 1px solid #AAAAAA;
+	border-bottom: 1px solid #AAAAAA;
+	text-align: right;
+	padding-right: 3px;
+}
+
+.movesTableColumn2 {
+	width: 75px;
+	border-left: 1px solid #AAAAAA;
+	border-bottom: 1px solid #AAAAAA;
+	text-align: center;
+}
+
+.movesTableColumn3 {
+	width: 75px;
+	border-left: 1px solid #AAAAAA;
+	border-right: 1px solid #AAAAAA;
+	border-bottom: 1px solid #AAAAAA;
+	text-align: center;
+}
+
+.dialogButton {
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.dialogButton span.dialogButtonText {
+	font-weight: bold; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+/* Chess styles */
+#board {
+	width: 360px;
+	height: 360px;
+	background-image: url(../img/board.png);
+}
+
+.square {
+	display: block;
+	position: relative;
+}
+
+.draggableSquare {
+	cursor: move;
+}
+
+.promotionOption {
+	cursor: pointer;
+}
+
+/* Chat styles */
+
+#bottomcontent {
+	float: left;
+	width: 940px;
+	margin: auto;
+	padding: 0px;
+}
+
+#chatOutput {
+	border: 3px solid #f0f0f0;
+	width: 920px;
+	height: 200px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 1.2em;
+	text-align: left;
+	overflow: auto;
+}
+
+#chatInput {
+	width: 920px;
+	border: 3px solid #cccccc;
+	font-family:  Verdana, Arial, Helvetica, sans-serif;
+	font-size: 1.2em;
+}
+
+.bottomSubpanelDivOuter {
+	background-color: #CCCCCC;
+	padding: 3px;
+	margin-bottom: 10px;
+}
+
+.bottomSubpanelDivInner {
+	background-color: #FFFFFF;
+	text-align: center;
+	padding: 3px;
+	height: 235px;
+}
+
+.timestampText {
+	font-size: 70%;
+	font-style: italic; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #555555;
+}

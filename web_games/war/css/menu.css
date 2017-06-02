@@ -1,0 +1,73 @@
+/* dropdown menu ---------------------------------------- */
+
+#nav {
+	font-family: "Trebuchet MS", Verdana, Arial, Sans-Serif;
+	font-size: 127%;
+	font-weight: normal;
+	background: white url(../img/games_header_bottom.jpg) no-repeat top center;
+}
+
+#nav, #nav ul {
+	float: left;
+	width: 960px;
+	height: 25px;
+	list-style: none;
+	padding: 0;
+	margin: 0 0 25px 0;
+	/* high z-index to overlap the smoothgallery */
+	z-index: 100;
+}
+
+#nav a {
+	display: block;
+	color: white;
+	text-decoration: none;
+	padding: 2px 15px;
+}
+
+#nav a:hover {
+	text-decoration: underline;
+}
+
+#nav li {
+	float: left;
+	height: 25px;
+	border-right: #A8A8A8 1px solid;
+}
+
+#nav li ul {
+	position: absolute;
+	left: -999em;
+	height: auto;
+	width: 160px;
+	font-weight: normal;
+	margin: 0;
+}
+
+#nav li li {
+	padding-right: 12px;
+	width: 160px
+}
+
+#nav li ul a {
+	width: 160px;
+	background: #A78D76; /* #A69078; /*#A28269; dropdown background color */
+	height: 25px;
+}
+
+#nav li ul ul {
+	margin: -1.75em 0 0 14em;
+}
+
+#nav li:hover ul ul, #nav li:hover ul ul ul, #nav li.sfhover ul ul, #nav li.sfhover ul ul ul {
+	left: -999em; 
+}
+
+#nav li:hover ul, #nav li li:hover ul, #nav li li li:hover ul, #nav li.sfhover ul, #nav li li.sfhover ul, #nav li li li.sfhover ul {
+	left: auto;
+}
+
+#nav li:hover, #nav li.sfhover {
+	/* WARNING: if the background isn't set here, IE7 doesn't clear the dropdown on mouseout. */
+	background: transparent;
+}
