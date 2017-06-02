@@ -1,2 +1,3 @@
 Testing auto trigger on git commit.
 Test2
+Test3
