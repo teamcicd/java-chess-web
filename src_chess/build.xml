@@ -10,7 +10,8 @@
     </target>
         	
     <target name="compile" depends="clean">
-        <javac destdir="bin">            
+        <javac destdir="bin">
+			<compilerarg line="-Dbuild.compiler=javac1.7" />
             <src path="${src}"/>            
         </javac>
     </target>
