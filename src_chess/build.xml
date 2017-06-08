@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <project name="src_chess" basedir="." default="package">
 
-    <property name="JDK1.6.dir" location="/usr/lib/jvm/java-1.6.0" />
-    <property name="javac1.6" location="${JDK1.6.dir}/bin/javac" />
+    <property name="JDK1.6.dir" location="/usr/lib/jvm/java-1.6.0"/>
+    <property name="javac1.6" location="${JDK1.6.dir}/bin/javac"/>
 	
     <property name="src" value="src"/>
     <property name="test_src" value="test"/>
     <property name="output" value="dist"/>
 	<property name="test_output" value="bin"/>
 	
-    <property name="jar.dir" value="lib" />
+    <property name="jar.dir" value="lib"/>
 	
     <path id="classpath">
         <fileset dir="${jar.dir}">
-            <include name="*.jar" />
+            <include name="*.jar"/>
         </fileset>
     </path>
 	
@@ -39,20 +39,20 @@
         <javac executable="${javac1.6}" 
           source="1.6" target="1.6" destdir="bin" fork="yes" includeantruntime="false">
             <src path="${test_src}"/>
-            <classpath refid="classpath" />	
+            <classpath refid="classpath"/>	
         </javac>
     </target>
 	
     <target name="run_unit_tests" depends="compile_unit_tests">
         <junit printsummary="yes" haltonfailure="no">
         <!-- Project classpath, must include junit.jar -->
-        <classpath refid="classpath" />
+        <classpath refid="classpath"/>
         <!-- test class -->
-        <classpath location="${test_output}" />
+        <classpath location="${test_output}"/>
             <test name="com.brasee.chess.BoardTest"
               haltonfailure="no" todir="${test_output}">
-                <formatter type="plain" />
-                <formatter type="xml" />
+                <formatter type="plain"/>
+                <formatter type="xml"/>
             </test>
         </junit>
     </target>
