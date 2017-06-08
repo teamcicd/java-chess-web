@@ -7,6 +7,7 @@
     <property name="src" value="src"/>
     <property name="test_src" value="test"/>
     <property name="output" value="dist"/>
+	<property name="test_output" value="bin"/>
 	
     <property name="jar.dir" value="lib" />
 	
@@ -43,7 +44,17 @@
     </target>
 	
     <target name="run_unit_tests" depends="compile_unit_tests">
-	
+        <junit printsummary="yes" haltonfailure="no">
+        <!-- Project classpath, must include junit.jar -->
+        <classpath refid="classpath" />
+        <!-- test class -->
+        <classpath location="${test_output}" />
+            <test name="com.brasee.chess.BoardTest"
+              haltonfailure="no" todir="${test_output}">
+              <formatter type="plain" />
+              <formatter type="xml" />
+	        </test>
+        </junit>
     </target>
 
 </project>
