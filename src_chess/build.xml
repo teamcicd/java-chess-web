@@ -23,5 +23,12 @@
         <delete dir="${output}"/>
     	<mkdir dir="${output}"/>
     </target>
+	
+    <target name="run_unit_tests" >
+        <javac executable="${javac1.6}" 
+             target="1.6" destdir="bin" fork="yes" includeantruntime="false">
+            <src path="${src}"/>            
+        </javac>
+    </target>
 
 </project>
