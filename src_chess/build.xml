@@ -51,9 +51,9 @@
         <classpath location="${test_output}" />
             <test name="com.brasee.chess.BoardTest"
               haltonfailure="no" todir="${test_output}">
-              <formatter type="plain" />
-              <formatter type="xml" />
-	        </test>
+                <formatter type="plain" />
+                <formatter type="xml" />
+            </test>
         </junit>
     </target>
 
