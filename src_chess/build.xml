@@ -1,20 +1,30 @@
 <?xml version="1.0"?>
 <project name="src_chess" basedir="." default="package">
-    <property name="JDK1.6.dir" location="/usr/lib/jvm/java-1.6.0" />
+
+	<property name="JDK1.6.dir" location="/usr/lib/jvm/java-1.6.0" />
     <property name="javac1.6" location="${JDK1.6.dir}/bin/javac" />
-
+	
     <property name="src" value="src"/>
+	<property name="test_src" value="test"/>
     <property name="output" value="dist"/>
-
+	
+	<property name="jar.dir" value="lib" />
+	
+	<path id="classpath">
+		<fileset dir="${jar.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	
     <target name="package" depends="compile">
         <jar destfile="${output}/src_chess.jar">
             <fileset dir="bin"/>
         </jar>
     </target>
-        	
+    
     <target name="compile" depends="clean">
         <javac executable="${javac1.6}" 
-             target="1.6" destdir="bin" fork="yes" includeantruntime="false">
+             source= "1.6" target="1.6" destdir="bin" fork="yes" includeantruntime="false">
             <src path="${src}"/>            
         </javac>
     </target>
@@ -24,10 +34,11 @@
     	<mkdir dir="${output}"/>
     </target>
 	
-	<target name="compile_unit_tests" >
+	<target name="compile_unit_tests" depends="compile">
         <javac executable="${javac1.6}" 
-             target="1.6" destdir="bin" fork="yes" includeantruntime="false">
-            <src path="${src}"/>            
+             source="1.6" target="1.6" destdir="bin" fork="yes" includeantruntime="false">
+            <src path="${test_src}"/>
+			<classpath refid="classpath" />	
         </javac>
     </target>
 	
