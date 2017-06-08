@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="src_chess" basedir="." default="package">
 
-	<property name="JDK1.6.dir" location="/usr/lib/jvm/java-1.6.0" />
+    <property name="JDK1.6.dir" location="/usr/lib/jvm/java-1.6.0" />
     <property name="javac1.6" location="${JDK1.6.dir}/bin/javac" />
 	
     <property name="src" value="src"/>
