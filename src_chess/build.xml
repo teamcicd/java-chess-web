@@ -5,16 +5,16 @@
     <property name="javac1.6" location="${JDK1.6.dir}/bin/javac" />
 	
     <property name="src" value="src"/>
-	<property name="test_src" value="test"/>
+    <property name="test_src" value="test"/>
     <property name="output" value="dist"/>
 	
-	<property name="jar.dir" value="lib" />
+    <property name="jar.dir" value="lib" />
 	
-	<path id="classpath">
-		<fileset dir="${jar.dir}">
-			<include name="*.jar" />
-		</fileset>
-	</path>
+    <path id="classpath">
+        <fileset dir="${jar.dir}">
+            <include name="*.jar" />
+        </fileset>
+    </path>
 	
     <target name="package" depends="compile">
         <jar destfile="${output}/src_chess.jar">
@@ -28,17 +28,17 @@
             <src path="${src}"/>            
         </javac>
     </target>
-
+    
     <target name="clean">
         <delete dir="${output}"/>
     	<mkdir dir="${output}"/>
     </target>
 	
-	<target name="compile_unit_tests" depends="compile">
+    <target name="compile_unit_tests" depends="compile">
         <javac executable="${javac1.6}" 
-             source="1.6" target="1.6" destdir="bin" fork="yes" includeantruntime="false">
+          source="1.6" target="1.6" destdir="bin" fork="yes" includeantruntime="false">
             <src path="${test_src}"/>
-			<classpath refid="classpath" />	
+            <classpath refid="classpath" />	
         </javac>
     </target>
 	
