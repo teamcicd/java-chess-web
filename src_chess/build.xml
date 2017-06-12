@@ -9,7 +9,7 @@
     <property name="output" value="dist"/>
     <property name="test_classpath" value="bin"/>
     <property name="test_output" value="test_reports"/>
-    <property name="data.dir" value="/var/lib/jenkins/workspace/java-chess-freestyle/src_chess/data"/>
+    <property name="data.dir" value="/var/lib/jenkins/workspace/data"/>
 	
     <property name="jar.dir" value="lib"/>
 	
