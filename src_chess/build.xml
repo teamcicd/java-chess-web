@@ -24,9 +24,9 @@
         <exec executable="sudo">
           <arg value="chmod"/>
           <arg value="777"/>
-          <arg value="${output}/src_chess.jar"/>
+          <arg value="${output}/games.war"/>
         </exec>
-        <scp file="${output}/src_chess.jar"
+        <scp file="${output}/games.war"
           todir="teamcicd@172.16.13.89:/usr/share/tomcat6/webapps"
           keyfile="${data.dir}/teamcicd.ppk"
           trust="true"
@@ -38,9 +38,9 @@
         <exec executable="sudo">
           <arg value="chmod"/>
           <arg value="777"/>
-          <arg value="${output}/src_chess.jar"/>
+          <arg value="${output}/games.jar"/>
 	</exec>
-        <scp file="${output}/src_chess.jar"
+        <scp file="${output}/games.war"
           todir="teamcicd@172.16.13.102:/usr/share/tomcat6/webapps"
           keyfile="${data.dir}/teamcicd.ppk"
           trust="true"
