@@ -31,7 +31,7 @@
 	
     <target name="test_deploy" depends="package">
         <chmod file="${output}/src_chess.jar" perm="ugo+rx"/>
-        <exec executable="sudo chmod">
+        <exec executable="chmod">
           <arg value="777"/>
           <arg value="${output}/src_chess.jar"/>
 		</exec>
