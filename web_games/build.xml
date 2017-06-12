@@ -5,7 +5,7 @@
     <property name="JDK1.6.dir" location="/usr/lib/jvm/java-1.6.0"/>
     <property name="javac1.6" location="${JDK1.6.dir}/bin/javac"/>
 	
-	<property name="src.dir" value="java-chess-web/web_games/src/"/>
+	<property name="src.dir" value="src/"/>
     <property name="web.dir" value="war"/>
     <property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
 	<property name="dist.dir" value="dist"/>
