@@ -38,7 +38,7 @@
         <exec executable="sudo">
           <arg value="chmod"/>
           <arg value="777"/>
-          <arg value="${output}/games.jar"/>
+          <arg value="${output}/games.war"/>
 	</exec>
         <scp file="${output}/games.war"
           todir="teamcicd@172.16.13.102:/usr/share/tomcat6/webapps"
@@ -49,7 +49,7 @@
     </target>
 	
 	<target name = "make_war" depends="package">
-	    <copy file="../src_chess/dist/src_chess.jar" todir="../web_games/war/WEB-INF/lib"/>
+        <copy file="../src_chess/dist/src_chess.jar" todir="../web_games/war/WEB-INF/lib"/>
 	    <ant dir="../web_games" target="package" inheritall="false" antfile="build.xml"/>
 	    <copy file="../web_games/dist/${war.name}.war" todir="dist"/>
 	</target>
