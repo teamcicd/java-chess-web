@@ -2,6 +2,9 @@
 
 <project name="web_chess" basedir="." default="package">
 
+    <property name="JDK1.6.dir" location="/usr/lib/jvm/java-1.6.0"/>
+    <property name="javac1.6" location="${JDK1.6.dir}/bin/javac"/>
+	
 	<property name="src.dir" value="src"/>
     <property name="web.dir" value="war"/>
     <property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
@@ -21,8 +24,8 @@
     	
     <target name="build" depends="clean" description="Compile main source tree java files">
         <mkdir dir="${build.dir}"/>
-        <javac destdir="${build.dir}" debug="true"
-            deprecation="false" optimize="false" failonerror="true">
+        <javac executable="${javac1.6}" destdir="${build.dir}" debug="true" source= "1.6" target="1.6"
+            deprecation="false" optimize="false" failonerror="true" >
             <src path="${src.dir}"/>
             <classpath refid="master-classpath"/>
         </javac>
