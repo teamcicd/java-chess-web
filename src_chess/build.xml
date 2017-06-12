@@ -49,7 +49,7 @@
     	<mkdir dir="${output}"/>
     </target>
 	
-    <target name="compile_unit_tests" depends="compile">
+    <target name="compile_unit_tests" >
         <javac executable="${javac1.6}" 
           source="1.6" target="1.6" destdir="bin" fork="yes" includeantruntime="false">
             <src path="${test_src}"/>
