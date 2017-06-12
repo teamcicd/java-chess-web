@@ -26,10 +26,10 @@
         <mkdir dir="${build.dir}"/>
         <javac executable="${javac1.6}" 
              source= "1.6" target="1.6" destdir="bin" fork="yes" includeantruntime="false" verbose="true">
-            <src path="${src.dir}"/>
-			<echo>Compile path = ${src.dir}</echo>
+            <src path="${src.dir}"/>	
             <classpath refid="master-classpath"/>
         </javac>
+		<echo>Compile path = ${src.dir}</echo>
     </target>
 
 	<target name="package" depends="build" description="Package the application into a WAR file">
