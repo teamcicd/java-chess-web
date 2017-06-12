@@ -27,6 +27,7 @@
         <javac executable="${javac1.6}" 
              source= "1.6" target="1.6" destdir="bin" fork="yes" includeantruntime="false" verbose="true">
             <src path="${src.dir}"/>
+			<echo>Compile path = ${src.dir}</echo>
             <classpath refid="master-classpath"/>
         </javac>
     </target>
