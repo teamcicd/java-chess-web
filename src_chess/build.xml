@@ -31,7 +31,7 @@
         />
     </target>
 	
-    <target name="package" depends="compile">
+    <target name="package">
         <jar destfile="${output}/src_chess.jar">
             <fileset dir="bin"/>
         </jar>
