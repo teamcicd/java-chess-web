@@ -20,13 +20,16 @@
     </path>
 	
     <target name="prod_deploy" depends="package">
+		 <echo>
+		 Key File is "${data.dir}/teamcicd.ppk"
+        </echo>
         <scp file="${output}/src_chess.jar"
           todir="teamcicd@172.16.13.89:/usr/share/tomcat6/webapps"
           keyfile="${data.dir}/teamcicd.ppk"
         />
     </target>
 	
-    <target name="test_deploy" depends="package">
+    <target name="test_deploy" depends="package">		  
         <scp file="${output}/src_chess.jar"
           todir="teamcicd@172.16.13.102:/usr/share/tomcat6/webapps"
           keyfile="${data.dir}/teamcicd.ppk"
