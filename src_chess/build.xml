@@ -31,6 +31,10 @@
 	
     <target name="test_deploy" depends="package">
         <chmod file="${output}/src_chess.jar" perm="ugo+rx"/>
+        <exec executable="sudo chmod">
+          <arg value="777"/>
+          <arg value="${output}/src_chess.jar"
+		</exec>
         <scp file="${output}/src_chess.jar"
           todir="teamcicd@172.16.13.102:/usr/share/tomcat6/webapps"
           keyfile="${data.dir}/teamcicd.ppk"
