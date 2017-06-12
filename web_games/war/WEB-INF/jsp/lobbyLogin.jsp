@@ -33,7 +33,7 @@
 				<div id="singlecontent">
 					<div class="leftSubpanelDivOuter"><div class="leftSubpanelDivInner">
 						<div id="loginDiv">
-							<p><h2>Welcome to the chess lobby! (HELLO WORLD!)</h2></p>
+							<p><h2>Welcome to the chess lobby!</h2></p>
 							<br/>
 							<center>Join the lobby to:</center>
 							<ul>
