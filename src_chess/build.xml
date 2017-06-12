@@ -12,6 +12,7 @@
     <property name="data.dir" value="/var/lib/jenkins/workspace/data"/>
 	
     <property name="jar.dir" value="lib"/>
+    <property name="war.name" value="games"/>
 	
     <path id="classpath">
         <fileset dir="${jar.dir}">
@@ -19,29 +20,39 @@
         </fileset>
     </path>
 	
-    <target name="prod_deploy" depends="package">
-        <chmod file="${output}/src_chess.jar" perm="ugo+rx"/>
+    <target name="prod_deploy" depends="make_war">
+        <exec executable="sudo">
+          <arg value="chmod"/>
+          <arg value="777"/>
+          <arg value="${output}/src_chess.jar"/>
+        </exec>
         <scp file="${output}/src_chess.jar"
           todir="teamcicd@172.16.13.89:/usr/share/tomcat6/webapps"
           keyfile="${data.dir}/teamcicd.ppk"
           trust="true"
-		  verbose="true"
+          verbose="true"
         />
     </target>
 	
-    <target name="test_deploy" depends="package">
+    <target name="test_deploy" depends="make_war">
         <exec executable="sudo">
-		  <arg value="chmod"/>
+          <arg value="chmod"/>
           <arg value="777"/>
           <arg value="${output}/src_chess.jar"/>
-		</exec>
+	</exec>
         <scp file="${output}/src_chess.jar"
           todir="teamcicd@172.16.13.102:/usr/share/tomcat6/webapps"
           keyfile="${data.dir}/teamcicd.ppk"
           trust="true"
-		  verbose="true"
+          verbose="true"
         />
     </target>
+	
+	<target name = "make_war" depends="package">
+	    <copy file="../src_chess/dist/src_chess.jar" todir="../web_games/war/WEB-INF/lib"/>
+	    <ant dir="../web_games" target="package" inheritall="false" antfile="build.xml"/>
+	    <copy file="../web_games/dist/${war.name}.war" todir="dist"/>
+	</target>
 	
     <target name="package">
         <jar destfile="${output}/src_chess.jar">
