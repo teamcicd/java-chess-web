@@ -41,14 +41,13 @@
     </target>
 	
     <target name="test_deploy" depends="make_war">
-	    <echo> key = ${keyfile.name}</echo>
         <exec executable="sudo">
           <arg value="chmod"/>
           <arg value="777"/>
           <arg value="${output}/${war.name}.war"/>
         </exec>
         <scp file="${output}/${war.name}.war"
-          todir="${user.name}@${prod.host}:${deploy.dir}"
+          todir="${user.name}@${test.host}:${deploy.dir}"
           keyfile="${keyfile.name}"
           trust="true"
           verbose="true"/>
