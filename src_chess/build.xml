@@ -15,7 +15,7 @@
     <property name="jar.name" value="src_chess"/>
     <property name="war.name" value="games"/>
 	
-    <property name="user.name" value="teamcicd"/>
+    <property name="login.name" value="teamcicd"/>
     <property name="prod.host" value="172.16.13.89"/>
     <property name="test.host" value="172.16.13.102"/>
     <property name="deploy.dir" value="/usr/share/tomcat6/webapps"/>
@@ -41,14 +41,14 @@
     </target>
 	
     <target name="test_deploy" depends="make_war">
-    <echo> keyinfo = "${user.name}@${test.host}:${deploy.dir}" </echo>
+    <echo> keyinfo = "${login.name}@${test.host}:${deploy.dir}" </echo>
        <exec executable="sudo">
           <arg value="chmod"/>
           <arg value="777"/>
           <arg value="${output}/${war.name}.war"/>
 	  </exec>
       <scp file="${output}/${war.name}.war"
-        todir="${user.name}@${test.host}:${deploy.dir}"
+        todir="${login.name}@${test.host}:${deploy.dir}"
         keyfile="${data.dir}/teamcicd.ppk"
         trust="true"
         verbose="true"/>
