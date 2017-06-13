@@ -5,23 +5,24 @@
     <property name="JDK1.6.dir" location="/usr/lib/jvm/java-1.6.0"/>
     <property name="javac1.6" location="${JDK1.6.dir}/bin/javac"/>
 	
-	<property name="src.dir" value="src/"/>
+    <property name="src.dir" value="src/"/>
     <property name="web.dir" value="war"/>
     <property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
-	<property name="dist.dir" value="dist"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="package.dir" value="${dist.dir}/package"/>
     <property name="war.name" value="games"/>
-
+    
     <path id="master-classpath">
         <fileset dir="${web.dir}/WEB-INF/lib">
             <include name="*.jar"/>
         </fileset>
         <pathelement path="${build.dir}"/>
     </path>
-
+    
     <target name="clean" description="Clean output directories">
         <delete dir="${build.dir}"/>
     </target>
-    	
+    
     <target name="compile" depends="clean" description="Compile main source tree java files">
         <mkdir dir="${build.dir}"/>
         <javac executable="${javac1.6}" 
@@ -30,29 +31,29 @@
             <classpath refid="master-classpath"/>
         </javac>
     </target>
-
-	<target name="package" depends="compile" description="Package the application into a WAR file">
-		<delete dir="${dist.dir}"/>
-		<mkdir dir="${dist.dir}"/>
-		<copy todir="${dist.dir}/package" preservelastmodified="true">
+    
+    <target name="package" depends="compile" description="Package the application into a WAR file">
+        <delete dir="${dist.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+        <copy todir="${package.dir}" preservelastmodified="true">
             <fileset dir="${web.dir}">
-            	<exclude name="**/META-INF/**"/>
+                <exclude name="**/META-INF/**"/>
                 <include name="**/*.*"/>
             </fileset>
         </copy>
-		<copy todir="${dist.dir}/package/WEB-INF/classes/META-INF" preservelastmodified="true">
+        <copy todir="${package.dir}/WEB-INF/classes/META-INF" preservelastmodified="true">
             <fileset dir="${web.dir}/META-INF">
                 <include name="**/*.*"/>
             </fileset>
         </copy>
 		
-		<!-- build WAR -->
-		<war destfile="${dist.dir}/${war.name}.war"
-             webxml="${dist.dir}/package/WEB-INF/web.xml">
-            <fileset dir="${dist.dir}/package">
+        <!-- build WAR -->
+        <war destfile="${dist.dir}/${war.name}.war"
+          webxml="${package.dir}/WEB-INF/web.xml">
+            <fileset dir="${package.dir}">
                 <include name="**/*.*"/>
             </fileset>
         </war>
-	</target>
+    </target>
 
 </project>
