@@ -27,6 +27,19 @@
         </fileset>
     </path>
 	
+    <target name="prod_deploy" depends="make_war">
+        <exec executable="sudo">
+          <arg value="chmod"/>
+          <arg value="777"/>
+          <arg value="${output}/${war.name}.war"/>
+        </exec>
+        <scp file="${output}/${war.name}.war"
+          todir="${user.name}@${prod.host}:${deploy.dir}"
+          keyfile="${keyfile.name}"
+          trust="true"
+          verbose="true"/>
+    </target>
+	
     <target name="test_deploy" depends="make_war">
        <exec executable="sudo">
           <arg value="chmod"/>
@@ -38,19 +51,6 @@
         keyfile="${data.dir}/teamcicd.ppk"
         trust="true"
         verbose="true"/>
-    </target>
-	
-    <target name="test_deploy" depends="make_war">
-        <exec executable="sudo">
-          <arg value="chmod"/>
-          <arg value="777"/>
-          <arg value="${output}/${war.name}.war"/>
-        </exec>
-        <scp file="${output}/${war.name}.war"
-          todir="${user.name}@${test.host}:${deploy.dir}"
-          keyfile="${keyfile.name}"
-          trust="true"
-          verbose="true"/>
     </target>
 	
     <target name = "make_war" depends="package">
