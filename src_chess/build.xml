@@ -27,7 +27,7 @@
         </fileset>
     </path>
 	
-    <target name="prod_deploy" depends="make_war">
+    <target name="deploy_prod" depends="make_war">
         <exec executable="sudo">
           <arg value="chmod"/>
           <arg value="777"/>
@@ -40,7 +40,7 @@
           verbose="true"/>
     </target>
 	
-    <target name="test_deploy" depends="make_war">
+    <target name="deploy_test" depends="make_war">
        <exec executable="sudo">
           <arg value="chmod"/>
           <arg value="777"/>
