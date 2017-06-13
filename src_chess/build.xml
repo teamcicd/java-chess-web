@@ -47,7 +47,7 @@
           <arg value="${output}/${war.name}.war"/>
 	  </exec>
       <scp file="${output}/${war.name}.war"
-        todir="teamcicd@172.16.13.102:/usr/share/tomcat6/webapps"
+        todir="${user.name}@${test.host}:${deploy.dir}"
         keyfile="${data.dir}/teamcicd.ppk"
         trust="true"
         verbose="true"/>
