@@ -37,8 +37,7 @@
           todir="${user.name}@${prod.host}:${deploy.dir}"
           keyfile="${keyfile.name}"
           trust="true"
-          verbose="true"
-        />
+          verbose="true"/>
     </target>
 	
     <target name="test_deploy" depends="make_war">
@@ -51,8 +50,8 @@
           todir="${user.name}@${prod.host}:${deploy.dir}"
           keyfile="${keyfile.name}"
           trust="true"
-          verbose="true"
-        />
+          verbose="true"/>
+		<echo> key = ${keyfile.name}</echo>
     </target>
 	
     <target name = "make_war" depends="package">
