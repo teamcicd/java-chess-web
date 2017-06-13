@@ -19,7 +19,7 @@
     <property name="prod.host" value="172.16.13.89"/>
     <property name="test.host" value="172.16.13.102"/>
     <property name="deploy.dir" value="/usr/share/tomcat6/webapps"/>
-    <property name="keyfile.name" value="${data.dir}/teamcicd.ppk"/>
+    <property name="keyfile.name" value="/home/teamcicd/.ssh/id_rsa"/>
     
     <path id="classpath">
         <fileset dir="${jar.dir}">
