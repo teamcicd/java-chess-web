@@ -44,9 +44,9 @@
        <exec executable="sudo">
           <arg value="chmod"/>
           <arg value="777"/>
-          <arg value="${output}/games.war"/>
+          <arg value="${output}/${war.name}.war"/>
 	  </exec>
-      <scp file="${output}/games.war"
+      <scp file="${output}/${war.name}.war"
         todir="teamcicd@172.16.13.102:/usr/share/tomcat6/webapps"
         keyfile="${data.dir}/teamcicd.ppk"
         trust="true"
