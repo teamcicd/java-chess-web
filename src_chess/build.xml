@@ -12,8 +12,15 @@
     <property name="data.dir" value="/var/lib/jenkins/workspace/data"/>
 	
     <property name="jar.dir" value="lib"/>
+    <property name="jar.name" value="src_chess"/>
     <property name="war.name" value="games"/>
 	
+    <property name="user.name" value="teamcicd"/>
+    <property name="prod.host" value="172.16.13.89"/>
+    <property name="test.host" value="172.16.13.102"/>
+    <property name="deploy.dir" value="/usr/share/tomcat6/webapps"/>
+    <property name="keyfile.name" value="${data.dir}/teamcicd.ppk"/>
+    
     <path id="classpath">
         <fileset dir="${jar.dir}">
             <include name="*.jar"/>
@@ -24,11 +31,11 @@
         <exec executable="sudo">
           <arg value="chmod"/>
           <arg value="777"/>
-          <arg value="${output}/games.war"/>
+          <arg value="${output}/${war.name}.war"/>
         </exec>
-        <scp file="${output}/games.war"
-          todir="teamcicd@172.16.13.89:/usr/share/tomcat6/webapps"
-          keyfile="${data.dir}/teamcicd.ppk"
+        <scp file="${output}/${war.name}.war"
+          todir="${user.name}@${prod.host}:${deploy.dir}"
+          keyfile="${keyfile.name}"
           trust="true"
           verbose="true"
         />
@@ -38,31 +45,31 @@
         <exec executable="sudo">
           <arg value="chmod"/>
           <arg value="777"/>
-          <arg value="${output}/games.war"/>
-	</exec>
-        <scp file="${output}/games.war"
-          todir="teamcicd@172.16.13.102:/usr/share/tomcat6/webapps"
-          keyfile="${data.dir}/teamcicd.ppk"
+          <arg value="${output}/${war.name}.war"/>
+        </exec>
+        <scp file="${output}/${war.name}.war"
+          todir="${user.name}@${prod.host}:${deploy.dir}"
+          keyfile="${keyfile.name}"
           trust="true"
           verbose="true"
         />
     </target>
 	
-	<target name = "make_war" depends="package">
-        <copy file="../src_chess/dist/src_chess.jar" todir="../web_games/war/WEB-INF/lib"/>
-	    <ant dir="../web_games" target="package" inheritall="false" antfile="build.xml"/>
-	    <copy file="../web_games/dist/${war.name}.war" todir="dist"/>
-	</target>
+    <target name = "make_war" depends="package">
+        <copy file="../src_chess/dist/${jar.name}.jar" todir="../web_games/war/WEB-INF/lib"/>
+	<ant dir="../web_games" target="package" inheritall="false" antfile="build.xml"/>
+	<copy file="../web_games/dist/${war.name}.war" todir="dist"/>
+    </target>
 	
     <target name="package">
-        <jar destfile="${output}/src_chess.jar">
+        <jar destfile="${output}/${jar.name}.jar">
             <fileset dir="bin"/>
         </jar>
     </target>
     
     <target name="compile" depends="clean">
         <javac executable="${javac1.6}" 
-             source= "1.6" target="1.6" destdir="bin" fork="yes" includeantruntime="false">
+          source= "1.6" target="1.6" destdir="bin" fork="yes" includeantruntime="false">
             <src path="${src}"/>            
         </javac>
     </target>
