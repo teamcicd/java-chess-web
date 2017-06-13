@@ -41,6 +41,7 @@
     </target>
 	
     <target name="test_deploy" depends="make_war">
+    <echo> keyinfo = "${user.name}@${test.host}:${deploy.dir}" </echo>
        <exec executable="sudo">
           <arg value="chmod"/>
           <arg value="777"/>
