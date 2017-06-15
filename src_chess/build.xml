@@ -16,7 +16,8 @@
     <property name="war.name" value="games"/>
 	
     <property name="login.name" value="teamcicd"/>
-    <property name="prod.host" value="172.16.13.89"/>
+    <property name="prod1.host" value="172.16.13.89"/>
+    <property name="prod2.host" value="172.16.13.88"/>
     <property name="test.host" value="172.16.13.102"/>
     <property name="deploy.dir" value="/usr/share/tomcat6/webapps"/>
     <property name="keyfile.name" value="/home/teamcicd/.ssh/id_rsa"/>
@@ -27,19 +28,32 @@
         </fileset>
     </path>
 	
-    <target name="deploy_prod" depends="make_war">
+    <target name="deploy_prod1" depends="make_war">
         <exec executable="sudo">
           <arg value="chmod"/>
           <arg value="777"/>
           <arg value="${output}/${war.name}.war"/>
         </exec>
         <scp file="${output}/${war.name}.war"
-          todir="${login.name}@${prod.host}:${deploy.dir}"
+          todir="${login.name}@${prod1.host}:${deploy.dir}"
           keyfile="${keyfile.name}"
           trust="true"
           verbose="true"/>
     </target>
 	
+    <target name="deploy_prod2" depends="make_war">
+        <exec executable="sudo">
+          <arg value="chmod"/>
+          <arg value="777"/>
+          <arg value="${output}/${war.name}.war"/>
+        </exec>
+        <scp file="${output}/${war.name}.war"
+          todir="${login.name}@${prod2.host}:${deploy.dir}"
+          keyfile="${keyfile.name}"
+          trust="true"
+          verbose="true"/>
+    </target>   
+    
     <target name="deploy_test" depends="make_war">
        <exec executable="sudo">
           <arg value="chmod"/>
