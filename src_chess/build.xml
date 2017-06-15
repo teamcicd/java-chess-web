@@ -17,7 +17,7 @@
 	
     <property name="login.name" value="teamcicd"/>
     <property name="prod1.host" value="172.16.13.89"/>
-    <property name="prod2.host" value="172.16.13.88"/>
+    <property name="prod2.host" value="172.16.12.88"/>
     <property name="test.host" value="172.16.13.102"/>
     <property name="deploy.dir" value="/usr/share/tomcat6/webapps"/>
     <property name="keyfile.name" value="/home/teamcicd/.ssh/id_rsa"/>
