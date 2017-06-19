@@ -21,6 +21,7 @@
     <property name="test.host" value="172.16.13.102"/>
     <property name="deploy.dir" value="/usr/share/tomcat6/webapps"/>
     <property name="keyfile.name" value="/home/teamcicd/.ssh/id_rsa"/>
+    <property name="gui.dir" value="/home/teamcicd/.ssh/id_rsa"/>
     
     <path id="classpath">
         <fileset dir="${jar.dir}">
@@ -112,7 +113,15 @@
                 <formatter type="xml"/>
             </test>
         </junit>
-        <fail message="Tests failed. Please see test reports" if="test.failed" />
+        <fail message="Junit tests failed. Please see test reports" if="test.failed" />
+    </target>
+    
+    <target name="run_GUI_tests">
+        <exec dir="${gui.dir}" executable="python" failonerror="true" 
+          errorproperty="test.failed" logError="true">
+            <arg line="ChessGamePython.py results.log" />
+        </exec>
+        <fail message="GUI tests failed. Please see test reports" if="test.failed" />
     </target>
 
 </project>
