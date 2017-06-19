@@ -28,7 +28,7 @@
         </fileset>
     </path>
 	
-    <target name="deploy_prod1" depends="make_war">
+    <target name="deploy_prod1" >
         <exec executable="sudo">
           <arg value="chmod"/>
           <arg value="777"/>
@@ -41,7 +41,7 @@
           verbose="true"/>
     </target>
 	
-    <target name="deploy_prod2" depends="make_war">
+    <target name="deploy_prod2">
         <exec executable="sudo">
           <arg value="chmod"/>
           <arg value="777"/>
@@ -54,7 +54,7 @@
           verbose="true"/>
     </target>   
     
-    <target name="deploy_test" depends="make_war">
+    <target name="deploy_test">
        <exec executable="sudo">
           <arg value="chmod"/>
           <arg value="777"/>
@@ -67,13 +67,13 @@
         verbose="true"/>
     </target>
 	
-    <target name = "make_war" depends="package">
+    <target name = "package" depends="make_war">
         <copy file="../src_chess/dist/${jar.name}.jar" todir="../web_games/war/WEB-INF/lib"/>
-	<ant dir="../web_games" target="package" inheritall="false" antfile="build.xml"/>
-	<copy file="../web_games/dist/${war.name}.war" todir="dist"/>
+        <ant dir="../web_games" target="package" inheritall="false" antfile="build.xml"/>
+        <copy file="../web_games/dist/${war.name}.war" todir="dist"/>
     </target>
 	
-    <target name="package">
+    <target name="make_war">
         <jar destfile="${output}/${jar.name}.jar">
             <fileset dir="bin"/>
         </jar>
