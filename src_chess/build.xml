@@ -117,7 +117,7 @@
     </target>
     
     <target name="run_GUI_tests">
-        <exec dir="${gui.dir}" executable="python" failonerror="true" 
+        <exec dir="${gui.dir}" executable="python" failonerror="false" 
           errorproperty="test.failed" logError="true">
             <arg line="ChessGamePython.py results.log" />
         </exec>
