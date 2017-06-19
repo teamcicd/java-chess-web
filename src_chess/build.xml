@@ -100,7 +100,7 @@
     </target>
 	
     <target name="run_unit_tests" depends="compile_unit_tests">
-        <junit printsummary="yes" haltonfailure="true" failonerror="true">
+        <junit printsummary="yes" haltonfailure="true" failonerror="true" errorProperty="test.failed" failureProperty="test.failed" logfailedtests="yes">
         <!-- Project classpath, must include junit.jar -->
         <classpath refid="classpath"/>
         <!-- test class -->
@@ -111,6 +111,7 @@
                 <formatter type="xml"/>
             </test>
         </junit>
+        <fail message="Tests failed. Please see test reports" if="test.failed" />
     </target>
 
 </project>
