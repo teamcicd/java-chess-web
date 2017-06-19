@@ -23,7 +23,7 @@ public class BoardTest {
 		Piece pawn = new Pawn(Color.WHITE);
 		Square square = new Square("a2");
 		board.placePiece(square, pawn);
-		assertTrue(board.hasPieceOn(square));
+		assertFalse(board.hasPieceOn(square));
 	}
 	
 	@Test
