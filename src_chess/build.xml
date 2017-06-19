@@ -67,13 +67,13 @@
         verbose="true"/>
     </target>
 	
-    <target name = "package" depends="make_war">
+    <target name = "package" depends="make_jar">
         <copy file="../src_chess/dist/${jar.name}.jar" todir="../web_games/war/WEB-INF/lib"/>
-        <ant dir="../web_games" target="package" inheritall="false" antfile="build.xml"/>
+        <ant dir="../web_games" target="package_war" inheritall="false" antfile="build.xml"/>
         <copy file="../web_games/dist/${war.name}.war" todir="dist"/>
     </target>
 	
-    <target name="make_war">
+    <target name="make_jar">
         <jar destfile="${output}/${jar.name}.jar">
             <fileset dir="bin"/>
         </jar>

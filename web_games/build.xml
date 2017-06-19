@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project name="web_chess" basedir="." default="package">
+<project name="web_chess" basedir="." default="package_war">
 
     <property name="JDK1.6.dir" location="/usr/lib/jvm/java-1.6.0"/>
     <property name="javac1.6" location="${JDK1.6.dir}/bin/javac"/>
@@ -32,7 +32,7 @@
         </javac>
     </target>
     
-    <target name="package" depends="compile" description="Package the application into a WAR file">
+    <target name="package_war" depends="compile" description="Package the application into a WAR file">
         <delete dir="${dist.dir}"/>
         <mkdir dir="${dist.dir}"/>
         <copy todir="${package.dir}" preservelastmodified="true">
