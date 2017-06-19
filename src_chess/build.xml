@@ -121,6 +121,10 @@
           errorproperty="test.failed" logError="true">
             <arg line="ChessGamePython.py results.log" />
         </exec>
+        <exec dir="${gui.dir}" executable="python" failonerror="false" 
+          errorproperty="test.failed" logError="true">
+            <arg line="ChessGamePython.py results.log" />
+        </exec>
         <fail message="GUI tests failed. Please see test reports" if="test.failed" />
     </target>
 
