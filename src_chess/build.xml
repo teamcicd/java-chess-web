@@ -100,7 +100,7 @@
     </target>
 	
     <target name="run_unit_tests" depends="compile_unit_tests">
-        <junit printsummary="yes" haltonfailure="no">
+        <junit printsummary="yes" haltonfailure="yes">
         <!-- Project classpath, must include junit.jar -->
         <classpath refid="classpath"/>
         <!-- test class -->
