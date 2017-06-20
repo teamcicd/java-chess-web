@@ -22,7 +22,7 @@
     <property name="deploy.dir" value="/usr/share/tomcat6/webapps"/>
     <property name="keyfile.name" value="/home/teamcicd/.ssh/id_rsa"/>
     <property name="gui.dir" value="/home/teamcicd/python-example"/>
-    <property name="test.failed">
+    <property name="test.failed"/>
     
     <path id="classpath">
         <fileset dir="${jar.dir}">
