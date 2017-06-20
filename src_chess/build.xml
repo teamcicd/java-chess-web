@@ -121,7 +121,7 @@
           errorproperty="Temp123" resultproperty="GUI_test.failed">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
-            <arg value="SimplePythonTest.py21"/>
+            <arg value="SimplePythonTest.py"/>
         </exec>
         <echo>Result Property:${GUI_test.failed} Error:${Temp123}</echo>
         <condition property="fail_flag">
