@@ -118,7 +118,7 @@
     
     <target name="run_GUI_tests">
         <exec dir="${gui.dir}" executable="sudo" failonerror="false" 
-          errorproperty="test.failed" logError="true" verbose="true">
+          errorproperty="test.failed" logError="true">
             <arg value="python"/>
             <arg value="SimplePythonTest.py"/>
         </exec>
