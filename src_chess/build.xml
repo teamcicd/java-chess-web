@@ -119,7 +119,7 @@
     <target name="run_GUI_tests">
         <exec dir="${gui.dir}" executable="sudo" failonerror="true" 
           >
-            <env key="PATH" path="${env.PATH}:/usr/local/bin"/>
+            <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
             <arg value="SimplePythonTest.py"/>
         </exec>
