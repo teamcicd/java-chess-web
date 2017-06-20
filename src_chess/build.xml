@@ -129,7 +129,7 @@
           resultproperty="GUI_test.failed">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
-            <arg value="SimplePythonTest.py"/>
+            <arg value="SimplePythonTest.py21"/>
         </exec>
         <fail message="GUI tests failed. Please see test reports" if="GUI_test.failed"/>
     </target>
