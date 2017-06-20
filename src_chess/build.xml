@@ -117,7 +117,7 @@
     </target>
     
     <target name="run_GUI_tests">
-        <exec dir="${gui.dir}" executable="sudo" failonerror="true" 
+        <exec dir="${gui.dir}" executable="sudo" failonerror="false" 
           resultproperty="GUI_test.failed">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
