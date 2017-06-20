@@ -118,12 +118,12 @@
     
     <target name="run_GUI_tests">
         <exec dir="${gui.dir}" executable="sudo" failonerror="true" 
-          errorproperty="test.failed">
+          >
             <arg value="python"/>
             <arg value="SimplePythonTest.py"/>
         </exec>
         <exec dir="${gui.dir}" executable="sudo" failonerror="true" 
-          errorproperty="test.failed">
+          >
             <arg value="python"/>
             <arg value="SimplePythonTest.py"/>
         </exec>
