@@ -134,7 +134,7 @@
           errorproperty="errorMessage" resultproperty="returnCode">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
-            <arg value="SimplePythonTest.py"/>
+            <arg value="SimplePythonTest.py45"/>
         </exec>
         <echo>Result Property:${returnCode} Error:${errorMessage}</echo>
         <condition property="fail_flag2">
