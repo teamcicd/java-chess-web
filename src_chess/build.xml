@@ -118,19 +118,19 @@
     
     <target name="run_GUI_tests">
         <exec dir="${gui.dir}" executable="sudo" failonerror="false" 
-          errorproperty="Temp123" resultproperty="GUI_test.failed">
+          errorproperty="errorMessage" resultproperty="returnCode">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
-            <arg value="SimplePythonTest.py"/>
+            <arg value="SimplePythonTest.py123"/>
         </exec>
-        <echo>Result Property:${GUI_test.failed} Error:${Temp123}</echo>
+        <echo>Result Property:${returnCode} Error:${errorMessage}</echo>
         <condition property="fail_flag">
-        <not>
-            <equals arg1="0" arg2="${GUI_test.failed}"/>
-        </not>
-        </condition>
+            <not>
+                <equals arg1="0" arg2="${returnCode}"/>
+            </not>
+        </condition> 
+        <fail message="GUI test failed. ${errorMessage}." if="fail_flag"/>
         
-        <fail message="GUI tests failed. Please see test reports" if="fail_flag"/>
         <exec dir="${gui.dir}" executable="sudo" failonerror="true" 
           resultproperty="GUI_test.failed">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
