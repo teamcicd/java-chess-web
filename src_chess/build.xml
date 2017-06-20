@@ -119,12 +119,12 @@
     <target name="run_GUI_tests">
         <exec dir="${gui.dir}" executable="sudo" failonerror="false" 
           errorproperty="test.failed" logError="true">
-            <arg line="python ChessGamePython.py results.log" />
+            <arg line="python SimplePythonTest.py" />
         </exec>
         <fail message="GUI tests failed. Please see test reports" if="test.failed" />
         <exec dir="${gui.dir}" executable="sudo" failonerror="false" 
           errorproperty="test.failed" logError="true">
-            <arg line="python ChessGamePython.py results.log" />
+            <arg line="python SimplePythonTest.py" />
         </exec>
         <fail message="GUI tests failed. Please see test reports" if="test.failed" />
     </target>
