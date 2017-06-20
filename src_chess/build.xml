@@ -129,7 +129,7 @@
                 <equals arg1="0" arg2="${returnCode1}"/>
             </not>
         </condition> 
-        <fail message="FAILED: GUI test failed. ERROR MESSAGE: ${errorMessage1}." if="fail_flag1"/>
+        <fail message="GUI Test #1: Failed. Error message: ${errorMessage1}." if="fail_flag1"/>
         <echo>GUI Test #1: Success.</echo>
         
         <echo>GUI Test #2: Running "SimplePythonTest.py" test.</echo>
@@ -144,7 +144,7 @@
                 <equals arg1="0" arg2="${returnCode2}"/>
             </not>
         </condition> 
-        <fail message="FAILED: GUI test failed. ERROR MESSAGE: ${errorMessage2}." if="fail_flag2"/>
+        <fail message="GUI Test #2: Failed. Error Message: ${errorMessage2}." if="fail_flag2"/>
         <echo>GUI Test #2: Success.</echo>
     </target>
 
