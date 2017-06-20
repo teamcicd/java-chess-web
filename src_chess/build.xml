@@ -142,7 +142,7 @@
                 <equals arg1="0" arg2="${returnCode}"/>
             </not>
         </condition> 
-        <fail message="FAILED: GUI test failed. ERROR MESSAGE: ${errorMessage2}." if="fail_flag2"/>
+        <fail message="FAILED: GUI test failed. ERROR MESSAGE: ${errorMessage}." if="fail_flag2"/>
     </target>
 
 </project>
