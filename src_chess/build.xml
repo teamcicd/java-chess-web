@@ -130,6 +130,7 @@
             </not>
         </condition> 
         <fail message="FAILED: GUI test failed. ERROR MESSAGE: ${errorMessage1}." if="fail_flag1"/>
+        <echo>GUI Test #1: Success.</echo>
         
         <echo>GUI Test #2: Running "SimplePythonTest.py" test.</echo>
         <exec dir="${gui.dir}" executable="sudo" failonerror="false" 
@@ -144,6 +145,7 @@
             </not>
         </condition> 
         <fail message="FAILED: GUI test failed. ERROR MESSAGE: ${errorMessage2}." if="fail_flag2"/>
+        <echo>GUI Test #2: Success.</echo>
     </target>
 
 </project>
