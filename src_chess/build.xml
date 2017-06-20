@@ -122,13 +122,11 @@
             <arg value="python"/>
             <arg value="SimplePythonTest.py"/>
         </exec>
-        <fail message="GUI tests failed. Please see test reports" if="test.failed"/>
         <exec dir="${gui.dir}" executable="sudo" failonerror="false" 
           errorproperty="test.failed">
             <arg value="python"/>
             <arg value="SimplePythonTest.py"/>
         </exec>
-        <fail message="GUI tests failed. Please see test reports" if="test.failed"/>
     </target>
 
 </project>
