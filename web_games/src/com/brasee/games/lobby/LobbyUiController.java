@@ -15,7 +15,7 @@ public class LobbyUiController extends AbstractController {
 
 	public static String GAMES_USER_SESSION_VARIABLE = "gamesUser";
 	
-	private static String DEFAULT_USERNAME = "AnonymousUser";
+	private static String DEFAULT_USERNAME = "Anonymous";
 	private static String USERNAME_INPUT = "usernameInput";
 	
 	private MultiClientGameManager gameManager;
