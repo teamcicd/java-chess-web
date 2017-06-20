@@ -131,18 +131,18 @@
         <fail message="FAILED: GUI test failed. ERROR MESSAGE: ${errorMessage}." if="fail_flag1"/>
         
         <exec dir="${gui.dir}" executable="sudo" failonerror="true" 
-          errorproperty="errorMessage" resultproperty="returnCode">
+          errorproperty="errorMessage2" resultproperty="returnCode2">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
             <arg value="SimplePythonTest.py456"/>
         </exec>
-        <echo>Result Property:${returnCode} Error:${errorMessage}</echo>
+        <echo>Result Property:${returnCode2} Error:${errorMessage2}</echo>
         <condition property="fail_flag2">
             <not>
-                <equals arg1="0" arg2="${returnCode}"/>
+                <equals arg1="0" arg2="${returnCode2}"/>
             </not>
         </condition> 
-        <fail message="FAILED: GUI test failed. ERROR MESSAGE: ${errorMessage}." if="fail_flag2"/>
+        <fail message="FAILED: GUI test failed. ERROR MESSAGE: ${errorMessage2}." if="fail_flag2"/>
     </target>
 
 </project>
