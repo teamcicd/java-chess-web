@@ -22,7 +22,6 @@
     <property name="deploy.dir" value="/usr/share/tomcat6/webapps"/>
     <property name="keyfile.name" value="/home/teamcicd/.ssh/id_rsa"/>
     <property name="gui.dir" value="/home/teamcicd/python-example"/>
-    <property name="test.failed" value=""/>
     
     <path id="classpath">
         <fileset dir="${jar.dir}">
@@ -119,19 +118,19 @@
     
     <target name="run_GUI_tests">
         <exec dir="${gui.dir}" executable="sudo" failonerror="true" 
-          errorproperty="test.failed">
+          errorproperty="GUI_test.failed">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
             <arg value="SimplePythonTest.py"/>
         </exec>
-        <fail message="GUI tests failed. Please see test reports" if="test.failed"/>
+        <fail message="GUI tests failed. Please see test reports" if="GUI_test.failed"/>
         <exec dir="${gui.dir}" executable="sudo" failonerror="true" 
-          errorproperty="test.failed">
+          errorproperty="GUI_test.failed">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
             <arg value="SimplePythonTest.py"/>
         </exec>
-        <fail message="GUI tests failed. Please see test reports" if="test.failed"/>
+        <fail message="GUI tests failed. Please see test reports" if="GUI_test.failed"/>
     </target>
 
 </project>
