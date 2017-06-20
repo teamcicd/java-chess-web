@@ -117,13 +117,16 @@
     </target>
     
     <target name="run_GUI_tests">
-        <exec dir="${gui.dir}" executable="sudo" failonerror="true">
+        <exec dir="${gui.dir}" executable="sudo" failonerror="true" 
+          resultproperty="GUI_test.failed">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
             <arg value="SimplePythonTest.py"/>
         </exec>
+        <echo>Result Property:${GUI_test.failed}</echo>
         <fail message="GUI tests failed. Please see test reports" if="GUI_test.failed"/>
-        <exec dir="${gui.dir}" executable="sudo" failonerror="true">
+        <exec dir="${gui.dir}" executable="sudo" failonerror="true" 
+          resultproperty="GUI_test.failed">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
             <arg value="SimplePythonTest.py"/>
