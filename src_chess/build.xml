@@ -125,6 +125,7 @@
         </exec>
         <exec dir="${gui.dir}" executable="sudo" failonerror="true" 
           errorproperty="test.failed">
+            <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
             <arg value="SimplePythonTest.py"/>
         </exec>
