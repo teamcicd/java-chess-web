@@ -128,7 +128,7 @@
         <not>
             <equals arg1="0" arg2="${GUI_test.failed}"/>
         </not>
-        </condition
+        </condition>
         
         <fail message="GUI tests failed. Please see test reports" if="fail_flag"/>
         <exec dir="${gui.dir}" executable="sudo" failonerror="true" 
