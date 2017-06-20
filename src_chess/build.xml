@@ -118,17 +118,19 @@
     
     <target name="run_GUI_tests">
         <exec dir="${gui.dir}" executable="sudo" failonerror="true" 
-          >
+          errorproperty="test.failed">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
             <arg value="SimplePythonTest.py"/>
         </exec>
+        <fail message="Junit tests failed. Please see test reports" if="test.failed"/>
         <exec dir="${gui.dir}" executable="sudo" failonerror="true" 
           errorproperty="test.failed">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
             <arg value="SimplePythonTest.py"/>
         </exec>
+        <fail message="Junit tests failed. Please see test reports" if="test.failed"/>
     </target>
 
 </project>
