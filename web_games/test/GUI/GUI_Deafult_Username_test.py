@@ -18,9 +18,9 @@ class SimplePythonTest(unittest.TestCase):
     def test_simple_python(self):
         driver = self.driver
         driver.get(self.base_url + "/games/lobby.htm")
-        driver.find_element_by_id("usernameInput").clear()
-        driver.find_element_by_id("usernameInput").send_keys("Jenkins")
-        driver.find_element_by_css_selector("span.dialogButtonText").click()
+        element = driver.find_element_by_id("usernameInput")
+        defaultUsername = element.get_attribute("value")
+        self.assertEqual(defaultUsername, "CloudLPUser")
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
