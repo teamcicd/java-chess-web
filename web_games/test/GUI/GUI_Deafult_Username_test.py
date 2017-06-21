@@ -20,7 +20,7 @@ class SimplePythonTest(unittest.TestCase):
         driver.get(self.base_url + "/games/lobby.htm")
         element = driver.find_element_by_id("usernameInput")
         defaultUsername = element.get_attribute("value")
-        self.assertEqual(defaultUsername, "CloudLPUser")
+        self.assertEqual(defaultUsername, "Anonymous")
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
