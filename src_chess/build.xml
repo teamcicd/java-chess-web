@@ -117,12 +117,12 @@
     </target>
     
     <target name="run_GUI_tests">
-        <echo>GUI Test #1: Running "UI_Default_Username_test.py" test.</echo>
+        <echo>GUI Test #1: Running "GUI_Default_Username_test.py" test.</echo>
         <exec dir="${gui.dir}" executable="sudo" failonerror="false" 
           errorproperty="errorMessage1" resultproperty="returnCode1">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
-            <arg value="GUI_Deafult_Username_test.py"/>
+            <arg value="GUI_Default_Username_test.py"/>
         </exec>
         <condition property="fail_flag1">
             <not>
@@ -146,6 +146,22 @@
         </condition> 
         <fail message="GUI Test #2: Failed. Error Message: ${errorMessage2}." if="fail_flag2"/>
         <echo>GUI Test #2: Success.</echo>
+        
+        <echo>GUI Test #3: Running "SimpleMove_test.py" test.</echo>
+        <exec dir="${gui.dir}" executable="sudo" failonerror="false" 
+          errorproperty="errorMessage3" resultproperty="returnCode3">
+            <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
+            <arg value="python"/>
+            <arg value="SimpleMove_test.py"/>
+        </exec>
+        <condition property="fail_flag3">
+            <not>
+                <equals arg1="0" arg2="${returnCode3}"/>
+            </not>
+        </condition> 
+        <fail message="GUI Test #3: Failed. Error Message: ${errorMessage3}." if="fail_flag3"/>
+        <echo>GUI Test #3: Success.</echo>
+        
     </target>
 
 </project>
