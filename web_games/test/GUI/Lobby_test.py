@@ -18,8 +18,6 @@ class LobbyTest(unittest.TestCase):
     def test_lobby(self):
         driver = self.driver
         driver.get(self.base_url + "/games/lobby.htm")
-        try: self.assertEqual("Anonymous", driver.find_element_by_id("usernameInput").get_attribute("value"))
-        except AssertionError as e: self.verificationErrors.append(str(e))
         try: self.assertTrue(self.is_element_present(By.CSS_SELECTOR, "span.dialogButtonText"))
         except AssertionError as e: self.verificationErrors.append(str(e))
         self.assertEqual("Welcome to the chess lobby!", driver.find_element_by_css_selector("h2").text)
