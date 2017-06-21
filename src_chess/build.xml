@@ -122,7 +122,7 @@
           errorproperty="errorMessage1" resultproperty="returnCode1">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
-            <arg value="GUI_Default_Username_test.py"/>
+            <arg value="GUI_Deafult_Username_test.py"/>
         </exec>
         <condition property="fail_flag1">
             <not>
@@ -137,7 +137,7 @@
           errorproperty="errorMessage2" resultproperty="returnCode2">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
-            <arg value="GUI_Default_Username_test.py"/>
+            <arg value="GUI_Deafult_Username_test.py"/>
         </exec>
         <condition property="fail_flag2">
             <not>
