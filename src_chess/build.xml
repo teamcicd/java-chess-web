@@ -132,12 +132,12 @@
         <fail message="GUI Test #1: Failed. Error message: ${errorMessage1}." if="fail_flag1"/>
         <echo>GUI Test #1: Success.</echo>
         
-        <echo>GUI Test #2: Running "UI_Default_Username_test.py" test.</echo>
+        <echo>GUI Test #2: Running "Lobby_test.py" test.</echo>
         <exec dir="${gui.dir}" executable="sudo" failonerror="false" 
           errorproperty="errorMessage2" resultproperty="returnCode2">
             <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
             <arg value="python"/>
-            <arg value="GUI_Deafult_Username_test.py"/>
+            <arg value="Lobby_test.py"/>
         </exec>
         <condition property="fail_flag2">
             <not>
