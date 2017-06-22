@@ -44,7 +44,7 @@
 							<br/>
 							<form id="loginForm" action="lobby.htm" method="post">
 								<b>Your name:<b>&nbsp;
-								<input id="usernameInput" name="usernameInput" type="text" maxlength="25" value="Anonymous"></input>
+								<input id="usernameInput" name="usernameInput" type="text" maxlength="25" value="CloudLPUser"></input>
 								<br/>
 								<br/>
 								<a href="#" onclick="submitLoginForm()">
