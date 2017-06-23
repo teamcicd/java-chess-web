@@ -1,5 +1,5 @@
-<?xml version="1.0"?>
-<project name="src_chess" basedir="." default="package">
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="src_chess" basedir="." default="compile">
 
     <property name="JDK1.6.dir" location="/usr/lib/jvm/java-1.6.0"/>
     <property name="javac1.6" location="${JDK1.6.dir}/bin/javac"/>
@@ -23,76 +23,39 @@
     <property name="keyfile.name" value="/home/teamcicd/.ssh/id_rsa"/>
     <property name="gui.dir" value="/var/lib/jenkins/workspace/java-chess-freestyle/web_games/test/GUI"/>
     
+    
     <path id="classpath">
         <fileset dir="${jar.dir}">
             <include name="*.jar"/>
         </fileset>
     </path>
-	
-    <target name="deploy_prod1" >
-        <exec executable="sudo">
-          <arg value="chmod"/>
-          <arg value="777"/>
-          <arg value="${output}/${war.name}.war"/>
-        </exec>
-        <scp file="${output}/${war.name}.war"
-          todir="${login.name}@${prod1.host}:${deploy.dir}"
-          keyfile="${keyfile.name}"
-          trust="true"
-          verbose="true"/>
-    </target>
-	
-    <target name="deploy_prod2">
-        <exec executable="sudo">
-          <arg value="chmod"/>
-          <arg value="777"/>
-          <arg value="${output}/${war.name}.war"/>
-        </exec>
-        <scp file="${output}/${war.name}.war"
-          todir="${login.name}@${prod2.host}:${deploy.dir}"
-          keyfile="${keyfile.name}"
-          trust="true"
-          verbose="true"/>
-    </target>   
     
-    <target name="deploy_test">
-       <exec executable="sudo">
-          <arg value="chmod"/>
-          <arg value="777"/>
-          <arg value="${output}/${war.name}.war"/>
-	  </exec>
-      <scp file="${output}/${war.name}.war"
-        todir="${login.name}@${test.host}:${deploy.dir}"
-        keyfile="${keyfile.name}"
-        trust="true"
-        verbose="true"/>
-    </target>
-	
-    <target name = "package" depends="package_jar">
-        <copy file="../src_chess/dist/${jar.name}.jar" todir="../web_games/war/WEB-INF/lib"/>
-        <ant dir="../web_games" target="package_war" inheritall="false" antfile="build.xml"/>
-        <copy file="../web_games/dist/${war.name}.war" todir="dist"/>
-    </target>
-	
-    <target name="package_jar">
-        <jar destfile="${output}/${jar.name}.jar">
-            <fileset dir="bin"/>
-        </jar>
+    
+    <target name="clean" description="Clean up. Delete all generated files.">
+        <delete dir="${output}"/>
+    	<mkdir dir="${output}"/>
     </target>
     
-    <target name="compile" depends="clean">
+    <target name="compile" depends="clean" description="Compile the Chess Game's source code.">
         <javac executable="${javac1.6}" 
           source= "1.6" target="1.6" destdir="bin" fork="yes" includeantruntime="false">
             <src path="${src}"/>            
         </javac>
     </target>
     
-    <target name="clean">
-        <delete dir="${output}"/>
-    	<mkdir dir="${output}"/>
+    <target name = "package" depends="package_jar" description="Package the Chess Game's 'jar' file and ultimately, the 'war' file.">
+        <copy file="../src_chess/dist/${jar.name}.jar" todir="../web_games/war/WEB-INF/lib"/>
+        <ant dir="../web_games" target="package_war" inheritall="false" antfile="build.xml"/>
+        <copy file="../web_games/dist/${war.name}.war" todir="dist"/>
     </target>
 	
-    <target name="compile_unit_tests" >
+    <target name="package_jar" description="Package the Chess Game's 'jar' file.">
+        <jar destfile="${output}/${jar.name}.jar">
+            <fileset dir="bin"/>
+        </jar>
+    </target>
+    
+    <target name="compile_unit_tests" description="Compile all the Chess Game's JUnit tests.">
         <javac executable="${javac1.6}" 
           source="1.6" target="1.6" destdir="bin" fork="yes" includeantruntime="false">
             <src path="${test_src}"/>
@@ -100,7 +63,7 @@
         </javac>
     </target>
 	
-    <target name="run_unit_tests" depends="compile_unit_tests">
+    <target name="run_unit_tests" depends="compile_unit_tests" description="Run all the Chess Game's JUnit tests.">
         <junit printsummary="yes" haltonfailure="true"
           failureProperty="test.failed" logfailedtests="yes">
         <!-- Project classpath, must include junit.jar -->
@@ -116,7 +79,7 @@
         <fail message="Junit tests failed. Please see test reports" if="test.failed"/>
     </target>
     
-    <target name="run_GUI_tests">
+    <target name="run_GUI_tests" description="Run all the Chess Game's GUI tests.">
         <echo>GUI Test #1: Running "GUI_Default_Username_test.py" test.</echo>
         <exec dir="${gui.dir}" executable="sudo" failonerror="false" 
           errorproperty="errorMessage1" resultproperty="returnCode1">
@@ -161,7 +124,45 @@
         </condition> 
         <fail message="GUI Test #3: Failed. Error Message: ${errorMessage3}." if="fail_flag3"/>
         <echo>GUI Test #3: Success.</echo>
-        
     </target>
-
+    
+    <target name="deploy_test" description="Deploy the Chess Game's 'war' file to the test server.">
+        <exec executable="sudo">
+            <arg value="chmod"/>
+            <arg value="777"/>
+            <arg value="${output}/${war.name}.war"/>
+	    </exec>
+        <scp file="${output}/${war.name}.war"
+          todir="${login.name}@${test.host}:${deploy.dir}"
+          keyfile="${keyfile.name}"
+          trust="true"
+          verbose="true"/>
+    </target>
+    
+    <target name="deploy_prod1" description="Deploy the Chess Game's 'war' file to the hot backup production server.">
+        <exec executable="sudo">
+            <arg value="chmod"/>
+            <arg value="777"/>
+            <arg value="${output}/${war.name}.war"/>
+        </exec>
+        <scp file="${output}/${war.name}.war"
+          todir="${login.name}@${prod1.host}:${deploy.dir}"
+          keyfile="${keyfile.name}"
+          trust="true"
+          verbose="true"/>
+    </target>
+	
+    <target name="deploy_prod2" description="Deploy the Chess Game's 'war' file to the primary production server.">
+        <exec executable="sudo">
+            <arg value="chmod"/>
+            <arg value="777"/>
+            <arg value="${output}/${war.name}.war"/>
+        </exec>
+        <scp file="${output}/${war.name}.war"
+          todir="${login.name}@${prod2.host}:${deploy.dir}"
+          keyfile="${keyfile.name}"
+          trust="true"
+          verbose="true"/>
+    </target>   
+    
 </project>
