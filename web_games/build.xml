@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <project name="web_chess" basedir="." default="package_war">
 
@@ -19,11 +19,11 @@
         <pathelement path="${build.dir}"/>
     </path>
     
-    <target name="clean" description="Clean output directories">
+    <target name="clean" description="Clean up the output directories.">
         <delete dir="${build.dir}"/>
     </target>
     
-    <target name="compile" depends="clean" description="Compile main source tree java files">
+    <target name="compile" depends="clean" description="Compile main source tree java files.">
         <mkdir dir="${build.dir}"/>
         <javac executable="${javac1.6}" 
              source= "1.6" target="1.6" destdir="${build.dir}" fork="yes" includeantruntime="false">
@@ -32,7 +32,7 @@
         </javac>
     </target>
     
-    <target name="package_war" depends="compile" description="Package the application into a WAR file">
+    <target name="package_war" depends="compile" description="Package the Chess Game into a WAR file.">
         <delete dir="${dist.dir}"/>
         <mkdir dir="${dist.dir}"/>
         <copy todir="${package.dir}" preservelastmodified="true">
